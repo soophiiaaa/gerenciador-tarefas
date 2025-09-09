@@ -1,9 +1,11 @@
 import json
 
+script = "script.txt"
+
 
 def load_tasks():
     try:
-        with open("script.txt", "r") as file:
+        with open(script, "r") as file:
             content = file.read()
             return json.loads(content)
     except:
