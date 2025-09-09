@@ -17,12 +17,19 @@ def save_tasks(tasks):
 
 def add_tasks(tasks, new_task):
     tasks.append(new_task)
-    load_tasks()
+    save_tasks(tasks)
 
 
-def view_tasks(tasks, i):
+def remove_tasks(tasks, i):
     try:
-        tasks.pop(i)
-        load_tasks()
+        removed = tasks.pop(i)
+        save_tasks(tasks)
+        return f"Tarefa rremovida: {removed}"
     except IndexError:
         return "Índice Inválido"
+
+
+def view_tasks(tasks):
+    if not tasks:
+        return "Nenhuma tarefa encontrada."
+    return "\n".join(f"{i}. {task}" for i, task in enumerate(tasks))
